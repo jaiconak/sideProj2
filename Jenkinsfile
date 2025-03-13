@@ -16,16 +16,19 @@ pipeline {
         stage ('dockerImageBuild') {
             steps {
                 sh 'docker build -t jenkins-registry-jaico .'
+                sh 'docker build -t imageVersion .'
             }
         }
         stage ('dockerTag') {
             steps {
                 sh 'docker tag jenkins-registry-jaico:latest 039612867339.dkr.ecr.us-east-1.amazonaws.com/jenkins-registry-jaico:latest'
+                sh 'docker tag jenkins-registry-jaico:latest 039612867339.dkr.ecr.us-east-1.amazonaws.com/jenkins-registry-jaico:v1.${BUILD_NUMBER}'
             }
         }
         stage ('pushImage') {
             steps {
                 sh 'docker push 039612867339.dkr.ecr.us-east-1.amazonaws.com/jenkins-registry-jaico:latest'
+                sh 'docker push 039612867339.dkr.ecr.us-east-1.amazonaws.com/jenkins-registry-jaico:v1.${BUILD_NUMBER}'
             }
         }
     }
