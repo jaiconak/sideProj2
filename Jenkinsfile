@@ -1,21 +1,19 @@
 pipeline {
     agent any
     stages {
-        stage ('checkout') {
+        stage ('Code Scan') {
             steps {
-                sh 'echo "Jaico YOU GOT THIS!"'
-                sh 'uname -r'
-                sh 'nproc'
+                sh 'trivy --version'
             }
         }
-        stage ('test') {
+        stage ('dockerImageBuild') {
             steps {
-                sh 'echo "testing!!"'
+                sh 'docker -v'
             }
         }
-        stage ('create File') {
+        stage ('pushImage') {
             steps {
-                sh 'touch text-${BUILD_ID}'
+                sh 'docker ps'
             }
         }
     }
