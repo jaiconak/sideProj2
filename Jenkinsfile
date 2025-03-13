@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        AWS_REGION = "us-east1"
+        AWS_REGION = "us-east-1"
         IMAGE_ECR_REPO = "039612867339.dkr.ecr.us-east-1.amazonaws.com/jenkins-registry-jaico"
         ECR_REPO = "039612867339.dkr.ecr.us-east-1.amazonaws.com"
 
@@ -16,7 +16,7 @@ pipeline {
         }
         stage ("dockerLogin"){
             steps {
-                sh "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin $ECR_REPO"
+                sh "aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $ECR_REPO"
 
             }
         }
