@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage ('Code Scan') {
             steps {
-                sh 'trivy --version'
+                sh 'trivy fs . -o result.html'
             }
         }
         stage ('dockerImageBuild') {
