@@ -4,6 +4,7 @@ pipeline {
         stage ('checkout') {
             steps {
                 sh 'echo "Jaico YOU GOT THIS!"'
+                sh 'uname -r'
             }
         }
         stage ('test') {
