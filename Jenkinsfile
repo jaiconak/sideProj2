@@ -5,6 +5,7 @@ pipeline {
             steps {
                 sh 'echo "Jaico YOU GOT THIS!"'
                 sh 'uname -r'
+                sh 'nproc'
             }
         }
         stage ('test') {
