@@ -8,7 +8,7 @@ pipeline {
         }
         stage ('test') {
             steps {
-                sh 'echo "testing!!'
+                sh 'echo "testing!!"'
             }
         }
         stage ('create File') {
