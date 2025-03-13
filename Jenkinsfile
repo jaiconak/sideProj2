@@ -4,6 +4,7 @@ pipeline {
         stage ('Code Scan') {
             steps {
                 sh 'trivy fs . -o result.html'
+                sh 'cat results.html'
             }
         }
         stage ('dockerImageBuild') {
