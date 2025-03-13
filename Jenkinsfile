@@ -16,7 +16,7 @@ pipeline {
         stage ('dockerImageBuild') {
             steps {
                 sh 'docker build -t jenkins-registry-jaico .'
-                sh 'docker build -t imageVersion .'
+                sh 'docker build -t imageversion .'
             }
         }
         stage ('dockerTag') {
